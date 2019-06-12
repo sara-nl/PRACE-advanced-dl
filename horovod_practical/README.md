@@ -1,6 +1,8 @@
 In this handson session we will use [Tensorflow](https://github.com/tensorflow/tensorflow), [Keras](https://github.com/keras-team/keras) and [Horovod](https://github.com/horovod/horovod).
 
 ## Setup Cartesius (est. 5-10 min)
+
+### CPU partition
 A script [```setup_script.sh```](setup_script.sh) has been created for setting up your environment. The main commands are:
 ```bash
 module load Python/3.6.3-foss-2017b
@@ -8,6 +10,15 @@ virtualenv --no-site-packages hdis
 source hdis/bin/activate
 pip install intel-tensorflow --no-cache
 CC=mpicc CXX=mpicxx pip install horovod --no-cache
+```
+
+### GPU partition 
+```bash
+module load NCCL/2.3.5-CUDA-10.0.130 cuDNN/7.4.2-CUDA-10.0.130 Python/3.6.3-foss-2017b
+virtualenv --no-site-packages hdisgpu
+source hdisgpu/bin/activate
+pip install tensorflow-gpu --no-cache
+CC=mpicc CXX=mpicxx HOROVOD_NCCL_HOME=$EBROOTNCCL HOROVOD_GPU_ALLREDUCE=NCCL pip install horovod --no-cache
 ```
 
 ## First exercise (first half hour)
