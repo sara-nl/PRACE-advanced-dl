@@ -1,4 +1,4 @@
-In this handson session we will use [Tensorflow](https://github.com/tensorflow/tensorflow), [Keras](https://github.com/keras-team/keras) and [Horovod](https://github.com/horovod/horovod).
+In this handson session we will use [Tensorflow](https://github.com/tensorflow/tensorflow), [Keras](https://github.com/keras-team/keras) and [Horovod](https://github.com/horovod/horovod). For additional questions, you can email damian@surfsara.nl
 
 ## Setup Cartesius (est. 5-10 min)
 
