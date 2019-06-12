@@ -126,15 +126,16 @@ def model_fn(features, labels, mode, params):
   logits, loss = mnist_model(features, labels, mesh)
   outputs = [logits, loss]
   #mesh_shape = mtf.convert_to_shape(FLAGS.mesh_shape)
-  mesh_shape = [("gpu_row",1)]
-  layout_rules = [("batch","gpu_row")]
+  mesh_shape = [("gpu_row",2)]
+  layout_rules = [("hidden1","gpu_row")]
   #layout_rules = [("batch", "gpu_row"),]
   #layout_rules = mtf.auto_mtf.layout(graph,mesh_shape,outputs)
   #layout_rules = mtf.convert_to_layout_rules(FLAGS.layout)
   #mesh_size = mesh_shape.size
   #print("mesh_size :", mesh_size)
   #mesh_devices = [""] * mesh_size
-  mesh_devices = ["gpu:0",]
+  mesh_devices = ["gpu:0","gpu:1"]
+  #mesh_devices = ["gpu:0","gpu:1"]
   mesh_impl = mtf.placement_mesh_impl.PlacementMeshImpl(
       mesh_shape, layout_rules, mesh_devices)
   if mode == tf.estimator.ModeKeys.TRAIN:
