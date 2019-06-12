@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH -t 08:00:00
+#SBATCH -N 1
+#SBATCH -p gpu
+#SBATCH --reservation=ptc_course_2
+
+module load Python/3.6.3-foss-2017b
+module load cuDNN/7.4.2-CUDA-10.0.130
+virtualenv cp36_course
+
+source cp36_course/bin/activate
+
+pip install scikit-learn scikit-image numpy pandas matplotlib seaborn keras tqdm jupyter tensorflow-gpu
+pip install git+https://github.com/raghakot/keras-vis.git --force-reinstall --ignore-installed
+pip install scipy==1.1.0 --force-reinstall --ignore-installed
+
+PORT=$(whoami | cut -c4-6)
+PORT="5$PORT"
+
+ssh -o StrictHostKeyChecking=no -f -N -p 22 -R $PORT:localhost:$PORT int3
+
+
+jupyter notebook --no-browser --port $PORT
