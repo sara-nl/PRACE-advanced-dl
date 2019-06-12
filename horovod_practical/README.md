@@ -15,6 +15,10 @@ Can be found in [```practical1_clear_code.py```](practical1_clear_code.py). The 
 
 A few practical links: [Chain rule](https://en.wikipedia.org/wiki/Chain_rule), [Automatic differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation), [Tensorflow eager execution and automatic differentiation](https://www.tensorflow.org/tutorials/eager/automatic_differentiation)
 
+### Sub-exercise
+Take a look at https://github.com/horovod/horovod/blob/master/docs/tensor-fusion.rst
+
+Try to set HOROVOD_FUSION_THRESHOLD to 0 and HOROVOD_CYCLE_TIME to 0. Remember, passing variables to the MPI execution environment is done (in OpenMPI) with the ```-x``` options, i.e. ```-x HOROVOD_FUSION_THRESHOLD```
 
 ## Second exercise (second half hour)
 The exercise starts from https://github.com/yhgon/horovod-tf-uber/blob/master/examples/keras-cifar10-resnet.py
