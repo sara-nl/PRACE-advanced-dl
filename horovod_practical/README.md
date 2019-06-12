@@ -27,7 +27,7 @@ os.environ['OMP_NUM_THREADS'] = str(15)
 os.environ['KMP_AFFINITY'] = 'granularity=fine,compact,1,0’
 ```
 
-Convergence is poor without adjusting the learning rate schedule. All these are visible in [``practical2.py```](practical2.py)
+Convergence is poor without adjusting the learning rate schedule. All these are visible in [```practical2.py```](practical2.py)
 
 
 ## Submission scripts
